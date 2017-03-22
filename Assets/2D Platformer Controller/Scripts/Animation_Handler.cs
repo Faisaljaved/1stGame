@@ -21,9 +21,19 @@ public class Animation_Handler : MonoBehaviour {
 		Check ();
 	}
 	private void Check(){
-		if (Input.GetButtonDown("Horizontal")) {
+		if (Input.GetKeyDown ("left")) {
+			myAnim.SetBool ("invert", true);
+			myAnim.SetBool ("invertwalk", true);
+		} else if (Input.GetKeyUp ("left")) {
+			myAnim.SetBool ("invertwalk", false);
+
+		}
+		
+		if (Input.GetKeyDown("right")) {
+			myAnim.SetBool ("invert", false);
+
 			myAnim.SetBool ("walk", true);
-		} else if(Input.GetButtonUp("Horizontal")) {
+		} else if(Input.GetKeyUp("right")) {
 			myAnim.SetBool ("walk", false);
 		}
 	}
