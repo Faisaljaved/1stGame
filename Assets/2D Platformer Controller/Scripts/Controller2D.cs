@@ -6,12 +6,15 @@ public class Controller2D : RaycastController
     private float maxClimbAngle = 80f;
     private float maxDescendAngle = 80f;
 
+
+
     public CollisionInfo collisions;
     [HideInInspector]
     public Vector2 playerInput;
 
     public override void Start()
     {
+
         base.Start();
 
         collisions.faceDir = 1;
@@ -52,7 +55,8 @@ public class Controller2D : RaycastController
         {
             collisions.below = true;
         }
-    }
+
+		}
 
     private void HorizontalCollisions(ref Vector2 moveAmount)
     {
