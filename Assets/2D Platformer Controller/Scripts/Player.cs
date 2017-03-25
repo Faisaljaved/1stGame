@@ -96,7 +96,7 @@ public class Player : MonoBehaviour
     {
         if (velocity.y > minJumpVelocity)
         {
-            velocity.y = minJumpVelocity;
+            velocity.y = maxJumpVelocity;
         }
     }
 
