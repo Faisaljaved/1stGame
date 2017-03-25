@@ -5,12 +5,13 @@ using UnityEngine;
 public class Animation_Handler : MonoBehaviour {
 	private Animator myAnim;
 	private float startTime;
-
+	private float vVelocity;
+	//private Rigidbody2D rigidPlayer;
 
 	// Use this for initialization
 	void Start () {
 		myAnim = GetComponent<Animator> ();
-
+		//rigidPlayer = GetComponent<Rigidbody2D> ();
 	}
 	
 	// Update is called once per frame
@@ -37,17 +38,25 @@ public class Animation_Handler : MonoBehaviour {
 		} else if(Input.GetKeyUp("right")) {
 			myAnim.SetBool ("walk", false);
 		}
-		if (Input.GetKeyUp ("space")) {
-			myAnim.SetBool ("jump", true);
-			startTime = Time.time;
-
+		{
+			if (Input.GetKeyUp ("space")) {
+				myAnim.SetBool ("jump", true);
+				startTime = Time.time;
+			}/* else if (rigidPlayer.velocity.y < -0.1f) {
+				myAnim.SetBool ("jump", false);
+			}*/
 		}
 	}
 	void OnCollisionEnter2D(Collision2D bCollision)
 	{
-		
-	
-			myAnim.Play ("Player_idle");
-
+		if (bCollision.collider.gameObject.layer == LayerMask.NameToLayer ("Obstacles2")) {
+			
+			myAnim.SetTrigger ("collided");
+		}
+		if (!myAnim.GetBool ("invert")) {
+			myAnim.SetTrigger("touchdown");
+		} else if (myAnim.GetBool ("invert")) {
+			myAnim.SetTrigger("touchdowninvert");
+		}
 }
 }
