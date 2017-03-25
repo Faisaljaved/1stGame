@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class Animation_Handler : MonoBehaviour {
 	private Animator myAnim;
-	private float change;
+	private Rigidbody2D rigid;
+	public float velocity;
 
 
 	// Use this for initialization
 	void Start () {
-
+		rigid = GetComponent<Rigidbody2D>();
 		myAnim = GetComponent<Animator> ();
 
 	}
@@ -17,13 +18,14 @@ public class Animation_Handler : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		
-	
+		myAnim.SetFloat ("jumpVelocity",rigid.velocity.y);
+
 		Check ();
 	}
 	private void Check(){
 		if (Input.GetKeyDown ("left")) {
-			myAnim.SetBool ("invert", true);
 			myAnim.SetBool ("invertwalk", true);
+			myAnim.SetBool ("invert", true);
 		} else if (Input.GetKeyUp ("left")) {
 			myAnim.SetBool ("invertwalk", false);
 
@@ -36,5 +38,6 @@ public class Animation_Handler : MonoBehaviour {
 		} else if(Input.GetKeyUp("right")) {
 			myAnim.SetBool ("walk", false);
 		}
+
 	}
 }

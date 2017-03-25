@@ -50,7 +50,7 @@ public class CameraFollow : MonoBehaviour
 
         currentLookAheadX = Mathf.SmoothDamp(currentLookAheadX, targetLookAheadX, ref smoothLookVelocityX, lookSmoothTimeX);
 
-        focusPosition.y = Mathf.SmoothDamp(transform.position.y, focusPosition.y, ref smoothVelocityY, verticalSmoothTime);
+		focusPosition.y = Mathf.SmoothDamp(transform.position.y, (focusPosition.y+1.2f), ref smoothVelocityY, verticalSmoothTime);
         focusPosition += Vector2.right * currentLookAheadX;
         transform.position = (Vector3)focusPosition + Vector3.forward * -10;
     }
@@ -76,7 +76,7 @@ public class CameraFollow : MonoBehaviour
             top = targetBounds.min.y + size.y;
 
             velocity = Vector2.zero;
-            centre = new Vector2((left + right) / 2, (top + bottom) / 2);
+			centre = new Vector2((left + right) / 2, (top + bottom) / 2);
         }
 
         public void Update(Bounds targetBounds)
