@@ -18,7 +18,7 @@ public class Animation_Handler : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		
-		myAnim.SetFloat ("jumpVelocity",rigid.velocity.y);
+
 
 		Check ();
 	}
@@ -38,6 +38,8 @@ public class Animation_Handler : MonoBehaviour {
 		} else if(Input.GetKeyUp("right")) {
 			myAnim.SetBool ("walk", false);
 		}
+		myAnim.SetFloat ("jumpVelocity",rigid.velocity.y);
+
 
 	}
 }
