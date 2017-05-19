@@ -6,20 +6,18 @@ public class Animation_Handler : MonoBehaviour {
 	private Animator myAnim;
 	private float startTime;
 	private float vVelocity;
-	//private Rigidbody2D rigidPlayer;
+    private Rigidbody2D rigidPlayer;
 
 	// Use this for initialization
 	void Start () {
 		myAnim = GetComponent<Animator> ();
-		//rigidPlayer = GetComponent<Rigidbody2D> ();
+		rigidPlayer = GetComponent<Rigidbody2D> ();
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		
-		if(Time.time > (startTime + 0.3f )){
-				myAnim.SetBool ("jump", false);
-			}
+	
 		Check ();
 	}
 	private void Check(){
@@ -42,21 +40,17 @@ public class Animation_Handler : MonoBehaviour {
 			if (Input.GetKeyUp ("space")) {
 				myAnim.SetBool ("jump", true);
 				startTime = Time.time;
-			}/* else if (rigidPlayer.velocity.y < -0.1f) {
+			} else if (rigidPlayer.velocity.y < 0.01f) {
 				myAnim.SetBool ("jump", false);
-			}*/
+			}
 		}
 	}
 	void OnCollisionEnter2D(Collision2D bCollision)
 	{
 		if (bCollision.collider.gameObject.layer == LayerMask.NameToLayer ("Obstacles2")) {
 			
-			myAnim.SetTrigger ("collided");
+			//myAnim.SetTrigger ("collided");
 		}
-		if (!myAnim.GetBool ("invert")) {
-			myAnim.SetTrigger("touchdown");
-		} else if (myAnim.GetBool ("invert")) {
-			myAnim.SetTrigger("touchdowninvert");
-		}
+
 }
 }

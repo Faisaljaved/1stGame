@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
     private float accelerationTimeGrounded = .1f;
     private float moveSpeed = 6f;
 
+
     public Vector2 wallJumpClimb;
     public Vector2 wallJumpOff;
     public Vector2 wallLeap;
@@ -39,6 +40,7 @@ public class Player : MonoBehaviour
         gravity = -(2 * maxJumpHeight) / Mathf.Pow(timeToJumpApex, 2);
         maxJumpVelocity = Mathf.Abs(gravity) * timeToJumpApex;
         minJumpVelocity = Mathf.Sqrt(2 * Mathf.Abs(gravity) * minJumpHeight);
+
     }
 
     private void Update()
@@ -82,6 +84,8 @@ public class Player : MonoBehaviour
         }
         if (controller.collisions.below)
         {
+
+			
             velocity.y = maxJumpVelocity;
             isDoubleJumping = false;
         }
