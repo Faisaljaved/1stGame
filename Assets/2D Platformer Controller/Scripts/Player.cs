@@ -46,7 +46,7 @@ public class Player : MonoBehaviour
     private void Update()
     {
         CalculateVelocity();
-        HandleWallSliding();
+      HandleWallSliding();
 
         controller.Move(velocity * Time.deltaTime, directionalInput);
 
@@ -89,7 +89,7 @@ public class Player : MonoBehaviour
             velocity.y = maxJumpVelocity;
             isDoubleJumping = false;
         }
-        if (canDoubleJump && !controller.collisions.below && !isDoubleJumping && !wallSliding)
+  if (canDoubleJump && !controller.collisions.below && !isDoubleJumping && !wallSliding)
         {
             velocity.y = maxJumpVelocity;
             isDoubleJumping = true;

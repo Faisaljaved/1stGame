@@ -3,8 +3,8 @@
 public class Controller2D : RaycastController
 {
     public float fallingThroughPlatformResetTimer = 0.1f;
-    private float maxClimbAngle = 80f;
-   // private float maxDescendAngle = 80f;
+    private float maxClimbAngle = 0f;
+    private float maxDescendAngle = 0f;
 
 
 
@@ -39,7 +39,7 @@ public class Controller2D : RaycastController
 
         if (moveAmount.y < 0)
         {
-           // DescendSlope(ref moveAmount);
+            DescendSlope(ref moveAmount);
         }
 
        HorizontalCollisions(ref moveAmount);
@@ -68,7 +68,7 @@ public class Controller2D : RaycastController
             rayLength = 2 * skinWidth;
         }
 
-        for (int i = 0; i < horizontalRayCount; i++)
+       for (int i = 0; i < horizontalRayCount; i++)
         {
             Vector2 rayOrigin = (directionX == -1) ? raycastOrigins.bottomLeft : raycastOrigins.bottomRight;
             rayOrigin += Vector2.up * (horizontalRaySpacing * i);
@@ -98,7 +98,7 @@ public class Controller2D : RaycastController
                         distanceToSlopeStart = hit.distance - skinWidth;
                         moveAmount.x -= distanceToSlopeStart * directionX;
                     }
-                   // ClimbSlope(ref moveAmount, slopeAngle);
+                   ClimbSlope(ref moveAmount, slopeAngle);
                     moveAmount.x += distanceToSlopeStart * directionX;
                 }
 
@@ -119,7 +119,7 @@ public class Controller2D : RaycastController
         }
     } 
 
-    /* private void ClimbSlope(ref Vector2 moveAmount, float slopeAngle)
+    private void ClimbSlope(ref Vector2 moveAmount, float slopeAngle)
     {
         float moveDistance = Mathf.Abs(moveAmount.x);
         float climbmoveAmountY = Mathf.Sin(slopeAngle * Mathf.Deg2Rad) * moveDistance;
@@ -162,8 +162,8 @@ public class Controller2D : RaycastController
                 }
             }
         }
-    }*/
-
+    }
+			
     private void VerticalCollisions(ref Vector2 moveAmount)
     {
         float directionY = Mathf.Sign(moveAmount.y);
