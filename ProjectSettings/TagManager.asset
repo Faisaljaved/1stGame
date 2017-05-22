@@ -13,10 +13,17 @@ TagManager:
   - UI
   - 
   - 
+<<<<<<< HEAD
   - Background
   - Obstacle
   - Ground
   - Player
+=======
+  - 
+  - 
+  - 
+  - 
+>>>>>>> origin/master
   - 
   - 
   - 
@@ -41,6 +48,7 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+<<<<<<< HEAD
   - name: Background
     uniqueID: 618163453
     locked: 0
@@ -53,3 +61,5 @@ TagManager:
   - name: Player
     uniqueID: 8731063
     locked: 0
+=======
+>>>>>>> origin/master
