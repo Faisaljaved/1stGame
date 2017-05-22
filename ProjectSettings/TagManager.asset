@@ -13,8 +13,8 @@ TagManager:
   - UI
   - 
   - 
-  - Obstacle
-  - Background
+  - 
+  - 
   - 
   - 
   - 
@@ -38,21 +38,6 @@ TagManager:
   - 
   - 
   m_SortingLayers:
-  - name: Background
-    uniqueID: 1120308203
-    locked: 0
-  - name: Obstacle
-    uniqueID: 3910635903
-    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
-<<<<<<< HEAD
-=======
-  - name: Obstacle
-    uniqueID: 1972429549
-    locked: 0
-  - name: Player
-    uniqueID: 1685674599
-    locked: 0
->>>>>>> origin/master
