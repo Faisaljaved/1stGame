@@ -2,7 +2,12 @@
 
 [RequireComponent(typeof(Controller2D))]
 public class Player : MonoBehaviour
-{
+{   public Animator myAnim;
+	// private float startTime;
+	private float vVelocity;
+	//private Rigidbody2D rigidPlayer;
+
+
     public float maxJumpHeight = 4f;
     public float minJumpHeight = 1f;
     public float timeToJumpApex = .4f;
@@ -29,6 +34,7 @@ public class Player : MonoBehaviour
     private float velocityXSmoothing;
 
     private Controller2D controller;
+	private Animation_Handler myAnime;
 
     public Vector2 directionalInput;
     private bool wallSliding;
@@ -40,11 +46,14 @@ public class Player : MonoBehaviour
         gravity = -(2 * maxJumpHeight) / Mathf.Pow(timeToJumpApex, 2);
         maxJumpVelocity = Mathf.Abs(gravity) * timeToJumpApex;
         minJumpVelocity = Mathf.Sqrt(2 * Mathf.Abs(gravity) * minJumpHeight);
+		myAnim = GetComponent<Animator> ();
+		//rigidPlayer = GetComponent<Rigidbody2D> ();
 
     }
 
     private void Update()
     {
+		Check ();
         CalculateVelocity();
       HandleWallSliding();
 
@@ -53,8 +62,34 @@ public class Player : MonoBehaviour
         if (controller.collisions.above || controller.collisions.below)
         {
             velocity.y = 0f;
+			myAnim.SetBool ("jump", false);
         }
     }
+	private void Check(){
+		if (Input.GetKeyDown ("left")) {
+			myAnim.SetBool ("invertwalk", true);
+			myAnim.SetBool ("invert", true);
+		} else if (Input.GetKeyUp ("left")) {
+			myAnim.SetBool ("invertwalk", false);
+
+		}
+
+		if (Input.GetKeyDown("right")) {
+			myAnim.SetBool ("invert", false);
+
+			myAnim.SetBool ("walk", true);
+		} else if(Input.GetKeyUp("right")) {
+			myAnim.SetBool ("walk", false);
+		}
+		{
+			if (Input.GetKeyUp ("space")) {
+				myAnim.SetBool ("jump", true);
+				//startTime = Time.time;
+			} if (velocity.y < 0.001f) {
+			myAnim.SetBool ("jump", false);
+			}
+		}
+	}
 
     public void SetDirectionalInput(Vector2 input)
     {

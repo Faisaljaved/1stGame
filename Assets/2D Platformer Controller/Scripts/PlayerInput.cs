@@ -24,5 +24,6 @@ public class PlayerInput : MonoBehaviour
         {
             player.OnJumpInputUp();
         }
+	
     }
 }
