@@ -2,7 +2,7 @@
 
 [RequireComponent(typeof(Controller2D))]
 public class Player : MonoBehaviour
-{   public Animator myAnim;
+{   private Animator myAnim;
 	// private float startTime;
 	private float vVelocity;
 	//private Rigidbody2D rigidPlayer;
@@ -57,7 +57,10 @@ public class Player : MonoBehaviour
         CalculateVelocity();
       HandleWallSliding();
 
-        controller.Move(velocity * Time.deltaTime, directionalInput);
+		controller.Move (velocity * Time.deltaTime, directionalInput);
+
+			
+
 
         if (controller.collisions.above || controller.collisions.below)
         {

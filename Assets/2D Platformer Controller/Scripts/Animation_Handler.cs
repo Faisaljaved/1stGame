@@ -6,12 +6,12 @@ public class Animation_Handler : MonoBehaviour {
 	public Animator myAnim;
    // private float startTime;
 	private float vVelocity;
-    private Rigidbody2D rigidPlayer;
+//    private Rigidbody2D rigidPlayer;
 
 	// Use this for initialization
 	void Start () {
 		myAnim = GetComponent<Animator> ();
-		rigidPlayer = GetComponent<Rigidbody2D> ();
+		//rigidPlayer = GetComponent<Rigidbody2D> ();
 	}
 	
 	// Update is called once per frame
